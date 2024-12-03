@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useAuthStore } from '../store/store'
+import { url } from '../config/config'
 
 export const MainPage = () => {
     const [members, setmembers] = useState({
@@ -28,7 +29,7 @@ export const MainPage = () => {
         setmembers({ ...members, [e.target.name]: e.target.value })
     }
     const gotoLogin = () => {
-        axios.post('http://localhost:5000/login', members).then(resp => {
+        axios.post(`${url}/login`, members).then(resp => {
             console.log(resp)
             if (resp.data.result == 'fail') {
                 alert('로그인 실패')
@@ -42,7 +43,7 @@ export const MainPage = () => {
     }
 
     const handleLogout = () => {
-        axios.delete('http://localhost:5000/logout').then(resp => {
+        axios.delete(`${url}/logout`).then(resp => {
             console.log(resp.data)
             if (resp.data.result == 'true') {
                 sessionStorage.removeItem('loginID')
@@ -54,31 +55,35 @@ export const MainPage = () => {
     return (
         <>
             {loginID ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th colSpan={4}>
-                                <h1>{loginID} 님 환영합니다.</h1>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <button
-                                    onClick={() => {
-                                        navigate('/board')
-                                    }}
-                                >
-                                    게시판
-                                </button>
-                            </td>
-                            <td>
-                                <button onClick={handleLogout}>로그아웃</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="joinBox">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th colSpan={4}>
+                                    <h1>{loginID} 님 환영합니다.</h1>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <button
+                                        onClick={() => {
+                                            navigate('/board')
+                                        }}
+                                    >
+                                        게시판
+                                    </button>
+                                </td>
+                                <td>
+                                    <button onClick={handleLogout}>
+                                        로그아웃
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             ) : (
                 <div className="joinBox">
                     <h1>Hello Moontari Community</h1>

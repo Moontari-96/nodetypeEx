@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { url } from '../config/config'
 export const Join = () => {
     const navigate = useNavigate()
 
@@ -14,7 +15,7 @@ export const Join = () => {
     }
 
     const joinMemberBtn = () => {
-        axios.post('http://localhost:5000/join', members).then(resp => {
+        axios.post(`${url}/join`, members).then(resp => {
             console.log(resp.data)
             if (resp.data.result == 'fail') {
                 alert('중복된 아이디 입니다.')

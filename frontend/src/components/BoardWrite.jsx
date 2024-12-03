@@ -1,13 +1,26 @@
 import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { url } from '../config/config'
+import { useNavigate } from 'react-router-dom'
 
 export const BoardWrite = () => {
+    const navigator = useNavigate()
+    const sessionId = sessionStorage.getItem('loginID')
     const [board, setBoard] = useState({
         board_title: '',
         board_content: '',
+        member_id: sessionId,
     })
 
     const boardWritehandle = e => {
         setBoard({ ...board, [e.target.name]: e.target.value })
+    }
+
+    const writeBtn = () => {
+        console.log(board.board_content)
+        axios.post(`${url}/write`, board).then(resp => {
+            if (resp.data.result == 'ok') navigator('/')
+        })
     }
 
     return (
@@ -34,7 +47,9 @@ export const BoardWrite = () => {
                 ></textarea>
             </div>
             <div>
-                <button type="submit">게시글 작성</button>
+                <button type="submit" onClick={writeBtn}>
+                    게시글 작성
+                </button>
             </div>
         </div>
     )

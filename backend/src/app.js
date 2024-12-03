@@ -5,6 +5,7 @@ import session from 'express-session'
 import joinRouter from './routes/join.js'
 import loginRouter from './routes/login.js'
 import logoutRouter from './routes/logout.js'
+import writeRouter from './routes/write.js'
 import MemoryStore from 'memorystore'
 
 const app = express()
@@ -34,6 +35,7 @@ app.use(
 app.use('/join', joinRouter)
 app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
+app.use('/write', writeRouter)
 
 app.get('/', (req, res) => {
     res.status(200).send('welcome to server')
