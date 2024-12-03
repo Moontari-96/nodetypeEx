@@ -1,38 +1,80 @@
-.App {
+.joinBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.joinForm {
+  width: 400px;
+  border: 1px solid cornflowerblue;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.joinInput {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* 게시판 */
+.boardCont {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+}
+
+.boardList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.boardWrite {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.inputRow {
+  width: 100%;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: flex;
+  gap: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.boardContent {
+  min-width: 400px;
+  border-radius: 8px;
+  border-color: cornflowerblue;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border-color: cornflowerblue;
+}
+
+button {
+  background-color: unset;
+  padding: 10px;
+  border-radius: 8px;
+  border-color: cornflowerblue;
 }
