@@ -36,6 +36,7 @@ app.use('/join', joinRouter)
 app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
 app.use('/write', writeRouter)
+app.use('/list', listRouter)
 
 app.get('/', (req, res) => {
     res.status(200).send('welcome to server')

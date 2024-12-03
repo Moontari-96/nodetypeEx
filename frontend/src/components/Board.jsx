@@ -1,10 +1,20 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { url } from '../config/config'
+import axios from 'axios'
 
 export const Board = () => {
+    const [board, setBoard] = useState([])
+
     const navigate = useNavigate()
     const goToWrite = () => {
         navigate('/write')
+    }
+
+    const boardList = () => {
+        axios.get(`${url}/list`).then(resp => {
+            console.log(resp)
+        })
     }
     return (
         <div className="boardCont">
