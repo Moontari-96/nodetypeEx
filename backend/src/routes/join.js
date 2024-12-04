@@ -2,13 +2,6 @@ import express from 'express'
 import mysql from 'mysql2'
 import db from '../db.js'
 
-// const db = mysql.createConnection({
-//     host: '192.168.0.5',
-//     user: 'admin',
-//     password: 'admin',
-//     database: 'ifcomm',
-// })
-// db.connect()
 const joinRouter = express.Router()
 
 joinRouter.post('/', async (req, res) => {

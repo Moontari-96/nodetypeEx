@@ -19,7 +19,7 @@ export const BoardWrite = () => {
     const writeBtn = () => {
         console.log(board.board_content)
         axios.post(`${url}/write`, board).then(resp => {
-            if (resp.data.result == 'ok') navigator('/')
+            if (resp.data.result == 'ok') navigator('/board')
         })
     }
 
